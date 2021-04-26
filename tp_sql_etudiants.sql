@@ -2,14 +2,17 @@
     SELECT * FROM etudiant ORDER BY DateNaissance;
 
 -- 2.Afficher tous les étudiants inscrits à M1 et tous les étudiants inscrits à M2.
-    SELECT Nom, Prenom, Niveau FROM etudiant WHERE Niveau = 'M1';
-    SELECT Nom, Prenom, Niveau FROM etudiant WHERE Niveau = 'M2';
+    -- SELECT Nom, Prenom, Niveau FROM etudiant WHERE Niveau = 'M1';
+    -- SELECT Nom, Prenom, Niveau FROM etudiant WHERE Niveau = 'M2';
+    SELECT Nom, Prenom, Niveau FROM etudiant WHERE Niveau = 'M1' AND Niveau = 'M2';
 
 -- 3.Afficher les matricules des étudiants qui ont passé l'examen du cours c2.
     SELECT Matricule FROM examen WHERE code ="c2";
+    SELECT Matricule, Code FROM examen WHERE code ="c2";
  -- SELECT * FROM examen;
  
--- 4.Afficher les matricules de tous les étudiants qui ont passé l'examen du cours 001 et de tous les étudiants qui ont passé l'examen du cours 002.
+-- 4.Afficher les matricules de tous les étudiants qui ont passé l'examen du cours c1 
+-- et de tous les étudiants qui ont passé l'examen du cours c2.
     SELECT Matricule FROM examen WHERE code ="c1" OR code ="c2";
 
 -- 5.Afficher le matricule, code, note /20 et note /40 de tous les examens classés par ordre croissant de matricule et de code.
