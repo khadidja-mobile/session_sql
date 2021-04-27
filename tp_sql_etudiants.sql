@@ -4,7 +4,8 @@
 -- 2.Afficher tous les étudiants inscrits à M1 et tous les étudiants inscrits à M2.
     -- SELECT Nom, Prenom, Niveau FROM etudiant WHERE Niveau = 'M1';
     -- SELECT Nom, Prenom, Niveau FROM etudiant WHERE Niveau = 'M2';
-    SELECT Nom, Prenom, Niveau FROM etudiant WHERE Niveau = 'M1' AND Niveau = 'M2';
+    -- SELECT Nom, Prenom, Niveau FROM etudiant WHERE Niveau = 'M1' OR Niveau = 'M2';
+     SELECT * FROM etudiant WHERE Niveau = 'M1' OR Niveau = 'M2';
 
 -- 3.Afficher les matricules des étudiants qui ont passé l'examen du cours c2.
     SELECT Matricule FROM examen WHERE code ="c2";
@@ -16,12 +17,9 @@
     SELECT Matricule FROM examen WHERE code ="c1" OR code ="c2";
 
 -- 5.Afficher le matricule, code, note /20 et note /40 de tous les examens classés par ordre croissant de matricule et de code.
-    SELECT Matricule, Code, Note AS note_sur_20
+    SELECT Matricule, Code, Note AS note_sur_20,  Note * 2 AS note_sur_40
     FROM examen WHERE Note <= 20
-    ORDER BY Code;
-    SELECT Matricule, Code, Note AS note_sur_40
-    FROM examen WHERE Note <= 40
-    ORDER BY Code;
+    ORDER BY Matricule, Code;
 
 -- 6.Trouver la moyenne de notes de cours c2.
 -- SELECT * FROM examen WHERE Code = 'c2';
@@ -51,5 +49,6 @@
    
  -- 13.Trouver la moyenne de notes de chaque cours.
     SELECT Code, AVG(Note) AS moyenne FROM examen GROUP BY Code;
+    SELECT Code, ROUDN(AVG(Note), 1) AS moyenne FROM examen GROUP BY Code;
   
   
